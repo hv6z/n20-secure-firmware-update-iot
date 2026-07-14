@@ -68,8 +68,65 @@ Kết quả mong đợi: 4/4 ca kiểm thử đạt. Ma trận được ghi vào
 - Demo chưa triển khai HTTPS/mTLS, quản lý vòng đời khóa, thu hồi khóa, cập nhật vi sai và mất điện giữa quá trình ghi flash.
 - Không dùng mã nguồn này để cập nhật thiết bị sản xuất nếu chưa có threat model, kiểm thử độc lập và quy trình quản lý khóa phù hợp.
 
-## Tài liệu
+## Tài liệu tham khảo đã sử dụng
 
-Danh mục nguồn bắt buộc từ đề bài và các nguồn bổ sung nằm tại
-`references/link_nguon.txt`. Báo cáo ghi rõ tổ chức, URL, ngày truy cập,
-branch/tag (nếu là GitHub) và phần nội dung đã sử dụng.
+Ngày truy cập các nguồn: **14/07/2026**. Số thứ tự dưới đây thống nhất với ký
+hiệu trích dẫn `[1]` đến `[8]` trong báo cáo.
+
+### Nguồn GitHub bắt buộc theo đề bài
+
+1. **Espressif Systems - ESP-IDF Platform Repository**  
+   URL: <https://github.com/espressif/esp-idf>  
+   Phiên bản tham chiếu: `release-v5.4`; tài liệu API `v5.4.2`.  
+   Phần đã sử dụng: HTTPS OTA, phân vùng `otadata`, Secure Boot, app rollback
+   và anti-rollback.
+
+2. **OWASP - IoT Security Verification Standard (ISVS)**  
+   URL: <https://github.com/OWASP/IoT-Security-Verification-Standard-ISVS>  
+   Nhánh tham chiếu: `master`.  
+   Phần đã sử dụng: yêu cầu xác minh cơ chế cập nhật phần mềm, tính toàn vẹn,
+   xác thực nguồn gốc, bảo vệ khóa và chống rollback.
+
+3. **scriptingxss / OWASP - Firmware Security Testing Methodology (FSTM)**  
+   URL: <https://github.com/scriptingxss/owasp-fstm>  
+   Nhánh tham chiếu: `master`.  
+   Phần đã sử dụng: phương pháp đánh giá firmware gồm chín giai đoạn; tập trung
+   vào thu thập thông tin, phân tích firmware, trích xuất và phân tích hệ thống
+   tệp. Project chỉ tham khảo phương pháp, không kiểm thử hệ thống thật.
+
+4. **OWASP - IoTGoat: Deliberately Insecure Firmware**  
+   URL: <https://github.com/OWASP/IoTGoat>  
+   Nhánh tham chiếu: `master`.  
+   Phần đã sử dụng: nhận diện các rủi ro thường gặp trong firmware cố ý không
+   an toàn và xây dựng tư duy kiểm thử trong lab cục bộ. Project không triển
+   khai tấn công IoTGoat hoặc bất kỳ mục tiêu bên ngoài nào.
+
+### Nguồn bổ sung
+
+5. **Espressif Systems - ESP Encrypted Image Abstraction Layer**  
+   URL: <https://github.com/espressif/idf-extra-components/tree/master/esp_encrypted_img>  
+   Nhánh tham chiếu: `master`.  
+   Phần đã sử dụng: tham khảo cấu trúc component xử lý firmware mã hóa và cơ
+   chế giải mã dữ liệu theo luồng.
+
+6. **B. Moran, H. Tschofenig, D. Brown và M. Meriac - RFC 9019: A Firmware
+   Update Architecture for Internet of Things**, IETF, 2021.  
+   URL: <https://www.rfc-editor.org/rfc/rfc9019.html>  
+   Phần đã sử dụng: vai trò firmware author, firmware server, firmware
+   consumer, manifest, bootloader và chiến lược phục hồi khi cập nhật lỗi.
+
+7. **B. Moran và cộng sự - RFC 9124: A Manifest Information Model for
+   Firmware Updates in IoT Devices**, IETF, 2022.  
+   URL: <https://www.rfc-editor.org/rfc/rfc9124.html>  
+   Phần đã sử dụng: thông tin cần có trong manifest, sequence chống rollback,
+   xác thực, bảo vệ khóa ký và điều kiện áp dụng firmware.
+
+8. **Espressif Systems - Over The Air Updates (OTA), ESP-IDF Programming
+   Guide v5.4.2**  
+   URL: <https://docs.espressif.com/projects/esp-idf/en/v5.4.2/esp32/api-reference/system/ota.html>  
+   Phần đã sử dụng: trạng thái image, xác nhận bản cập nhật hoạt động, app
+   rollback và anti-rollback dựa trên security version/eFuse.
+
+Danh mục trên cũng được lưu tại `references/link_nguon.txt`. Mọi nội dung kỹ
+thuật lấy từ các nguồn đều được diễn giải lại và gắn số trích dẫn tương ứng
+trong `report/bao_cao_tieu_luan.docx`.
