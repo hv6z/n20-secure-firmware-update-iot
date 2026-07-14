@@ -1,0 +1,5 @@
+DEVICE=iot-demo-board-v1
+VERSION=3.0.0
+SEQUENCE=3
+SELF_TEST=FAIL
+PAYLOAD=Firmware gia lap dung de kiem thu rollback sau self-test.

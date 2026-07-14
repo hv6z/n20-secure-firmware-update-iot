@@ -1,0 +1,5 @@
+DEVICE=iot-demo-board-v1
+VERSION=2.0.0
+SEQUENCE=2
+SELF_TEST=PASS
+PAYLOAD=Firmware gia lap da sua lo hong va cho phep kich hoat.

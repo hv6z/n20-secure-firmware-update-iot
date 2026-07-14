@@ -1,0 +1,6 @@
+2026-07-14 16:18:52,495 | INFO | CASE=valid_signed_update EXPECTED=ACCEPT ACTUAL=ACCEPT RESULT=PASS DETAIL=Đã cài phiên bản 2.0.0 (sequence 2)
+2026-07-14 16:18:52,533 | INFO | CASE=tampered_ciphertext EXPECTED=REJECT ACTUAL=REJECT RESULT=PASS DETAIL=Giải mã/xác thực AES-GCM thất bại
+2026-07-14 16:18:52,577 | INFO | CASE=rollback_sequence EXPECTED=REJECT ACTUAL=REJECT RESULT=PASS DETAIL=Chống rollback: sequence 1 <= 1
+2026-07-14 16:18:52,615 | INFO | CASE=failed_self_test EXPECTED=REJECT ACTUAL=REJECT RESULT=PASS DETAIL=Self-test thất bại; đã rollback về firmware trước
+2026-07-14 16:18:52,622 | INFO | SUMMARY total=4 pass=4 fail=0
+2026-07-14 16:18:52,623 | INFO | OUTPUT log=D:\DAI HOC VAN HIEN\baomatiot\n20-secure-firmware-update-iot\results\logs\secure_update_demo.log matrix=D:\DAI HOC VAN HIEN\baomatiot\n20-secure-firmware-update-iot\results\test_matrix.csv

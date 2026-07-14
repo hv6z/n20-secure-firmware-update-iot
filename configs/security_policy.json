@@ -1,0 +1,12 @@
+{
+  "target": "iot-demo-board-v1",
+  "maximum_firmware_bytes": 4194304,
+  "require_manifest_signature": true,
+  "signature_algorithm": "RSA-PSS-SHA256",
+  "firmware_hash": "SHA-256",
+  "payload_encryption": "AES-256-GCM",
+  "key_wrap": "RSA-OAEP-SHA256",
+  "require_strictly_increasing_sequence": true,
+  "require_post_install_self_test": true,
+  "rollback_on_self_test_failure": true
+}

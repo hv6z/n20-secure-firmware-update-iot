@@ -1,0 +1,11 @@
+{
+  "schema": "secure-firmware-manifest/v1",
+  "target": "iot-demo-board-v1",
+  "version": "2.0.0",
+  "sequence": 2,
+  "size": 128,
+  "sha256": "d2746b28872dfacc2c473ba5f386e6909148aaf8b223428419bc267847a713f9",
+  "signature_algorithm": "RSA-PSS-SHA256",
+  "encryption_algorithm": "AES-256-GCM",
+  "key_wrap_algorithm": "RSA-OAEP-SHA256"
+}
