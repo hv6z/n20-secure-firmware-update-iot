@@ -1,5 +1,0 @@
-DEVICE=iot-demo-board-v1
-VERSION=1.0.0
-SEQUENCE=1
-SELF_TEST=PASS
-PAYLOAD=Firmware gia lap ban dau.
