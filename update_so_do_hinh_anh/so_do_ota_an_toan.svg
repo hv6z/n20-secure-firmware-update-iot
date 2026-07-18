@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7fbff"/>
+      <stop offset="1" stop-color="#e8f5fb"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0b2942" flood-opacity="0.16"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#1677a8"/>
+    </marker>
+    <style>
+      .title { font: 700 42px Arial, sans-serif; fill: #0b2942; }
+      .subtitle { font: 400 22px Arial, sans-serif; fill: #476377; }
+      .phase { font: 700 27px Arial, sans-serif; fill: #ffffff; }
+      .box-title { font: 700 25px Arial, sans-serif; fill: #0b2942; }
+      .device { font: 700 21px Arial, sans-serif; fill: #0b2942; }
+      .box-text { font: 400 20px Arial, sans-serif; fill: #29485d; }
+      .step { font: 700 20px Arial, sans-serif; fill: #ffffff; }
+      .small { font: 400 18px Arial, sans-serif; fill: #476377; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <text x="800" y="72" text-anchor="middle" class="title">QUY TRÌNH OTA AN TOÀN</text>
+  <text x="800" y="108" text-anchor="middle" class="subtitle">Thiết bị xác minh độc lập gói cập nhật trước khi ghi và kích hoạt firmware</text>
+
+  <rect x="70" y="150" width="420" height="62" rx="18" fill="#0e5678"/>
+  <text x="280" y="191" text-anchor="middle" class="phase">1. MÔI TRƯỜNG PHÁT HÀNH</text>
+  <rect x="70" y="235" width="420" height="470" rx="24" fill="#ffffff" stroke="#b7dbe9" stroke-width="3" filter="url(#shadow)"/>
+
+  <circle cx="122" cy="300" r="24" fill="#1677a8"/><text x="122" y="307" text-anchor="middle" class="step">1</text>
+  <text x="165" y="292" class="box-title">Tạo firmware và manifest</text>
+  <text x="165" y="325" class="box-text">target, version, sequence, size</text>
+
+  <circle cx="122" cy="400" r="24" fill="#1677a8"/><text x="122" y="407" text-anchor="middle" class="step">2</text>
+  <text x="165" y="392" class="box-title">Tính SHA-256</text>
+  <text x="165" y="425" class="box-text">Gắn mã băm vào manifest</text>
+
+  <circle cx="122" cy="500" r="24" fill="#1677a8"/><text x="122" y="507" text-anchor="middle" class="step">3</text>
+  <text x="165" y="492" class="box-title">Ký manifest bằng RSA-PSS</text>
+  <text x="165" y="525" class="box-text">Khóa riêng chỉ ở phía phát hành</text>
+
+  <circle cx="122" cy="600" r="24" fill="#1677a8"/><text x="122" y="607" text-anchor="middle" class="step">4</text>
+  <text x="165" y="592" class="box-title">Mã hóa firmware bằng AES-GCM</text>
+  <text x="165" y="625" class="box-text">Khóa AES được bọc bằng RSA-OAEP</text>
+
+  <rect x="570" y="150" width="330" height="62" rx="18" fill="#0e5678"/>
+  <text x="735" y="191" text-anchor="middle" class="phase">2. MÁY CHỦ OTA</text>
+  <rect x="570" y="300" width="330" height="260" rx="24" fill="#ffffff" stroke="#b7dbe9" stroke-width="3" filter="url(#shadow)"/>
+  <text x="735" y="370" text-anchor="middle" class="box-title">Lưu và phân phối gói cập nhật</text>
+  <text x="735" y="415" text-anchor="middle" class="box-text">Không giữ khóa riêng nhà phát hành</text>
+  <text x="735" y="452" text-anchor="middle" class="box-text">Không được thiết bị tin tuyệt đối</text>
+  <text x="735" y="505" text-anchor="middle" class="small">HTTPS/mTLS bảo vệ kênh truyền,</text>
+  <text x="735" y="535" text-anchor="middle" class="small">không thay thế chữ ký số.</text>
+
+  <path d="M490 430 H560" stroke="#1677a8" stroke-width="6" fill="none" marker-end="url(#arrow)"/>
+  <path d="M900 430 H970" stroke="#1677a8" stroke-width="6" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="990" y="150" width="540" height="62" rx="18" fill="#0e5678"/>
+  <text x="1260" y="191" text-anchor="middle" class="phase">3. THIẾT BỊ IOT XÁC MINH</text>
+  <rect x="990" y="235" width="540" height="650" rx="24" fill="#ffffff" stroke="#b7dbe9" stroke-width="3" filter="url(#shadow)"/>
+
+  <g>
+    <rect x="1035" y="270" width="450" height="62" rx="14" fill="#e3f3fa" stroke="#74bdd7" stroke-width="2"/>
+    <text x="1063" y="309" class="device">1. Kiểm tra cấu trúc, size và target</text>
+
+    <rect x="1035" y="350" width="450" height="62" rx="14" fill="#d8eef8" stroke="#55aeca" stroke-width="2"/>
+    <text x="1063" y="389" class="device">2. Xác minh chữ ký RSA-PSS</text>
+
+    <rect x="1035" y="430" width="450" height="62" rx="14" fill="#cde9f5" stroke="#399fbe" stroke-width="2"/>
+    <text x="1063" y="469" class="device">3. Kiểm tra sequence chống rollback</text>
+
+    <rect x="1035" y="510" width="450" height="62" rx="14" fill="#c2e4f1" stroke="#238eaf" stroke-width="2"/>
+    <text x="1063" y="549" class="device">4. Giải bọc khóa và xác thực AES-GCM</text>
+
+    <rect x="1035" y="590" width="450" height="62" rx="14" fill="#b7dfed" stroke="#167d9f" stroke-width="2"/>
+    <text x="1063" y="629" class="device">5. Đối chiếu kích thước và SHA-256</text>
+
+    <rect x="1035" y="670" width="450" height="62" rx="14" fill="#a8d9e8" stroke="#0f6c8d" stroke-width="2"/>
+    <text x="1063" y="709" class="device">6. Ghi staging và chạy self-test</text>
+
+    <rect x="1035" y="750" width="450" height="90" rx="14" fill="#dff4e8" stroke="#3a9b67" stroke-width="3"/>
+    <text x="1063" y="789" class="device">7. PASS: commit firmware mới</text>
+    <text x="1063" y="820" class="box-text">FAIL: giữ hoặc khôi phục firmware cũ</text>
+  </g>
+
+  <rect x="70" y="780" width="830" height="105" rx="20" fill="#fff1ef" stroke="#e66d5c" stroke-width="3"/>
+  <text x="105" y="822" class="box-title" fill="#a33225">Bất kỳ bước xác minh nào thất bại → TỪ CHỐI CẬP NHẬT</text>
+  <text x="105" y="855" class="box-text">Không giải mã hoặc ghi firmware khi chữ ký, target hay sequence không hợp lệ.</text>
+
+  <text x="800" y="955" text-anchor="middle" class="subtitle">Nguồn: tác giả tổng hợp từ ESP-IDF, OWASP ISVS/FSTM và mô hình demo Python</text>
+</svg>
