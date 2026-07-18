@@ -264,6 +264,23 @@ def tamper_package(source: Path, destination: Path) -> None:
     destination.write_bytes(raw)
 
 
+def tamper_manifest_signature(source: Path, destination: Path) -> None:
+    """Tạo gói có chữ ký manifest sai nhưng vẫn giữ cấu trúc gói hợp lệ."""
+    raw = source.read_bytes()
+    header_length = struct.unpack(">I", raw[len(MAGIC) : len(MAGIC) + 4])[0]
+    header_start = len(MAGIC) + 4
+    payload_start = header_start + header_length
+    header = json.loads(raw[header_start:payload_start].decode("utf-8"))
+    signature = header["signature"]
+    header["signature"] = ("A" if signature[0] != "A" else "B") + signature[1:]
+    header_bytes = canonical_json(header)
+    if len(header_bytes) != header_length:
+        raise ValueError("Không thể giữ nguyên độ dài header khi sửa chữ ký")
+    destination.write_bytes(
+        MAGIC + struct.pack(">I", len(header_bytes)) + header_bytes + raw[payload_start:]
+    )
+
+
 def run_case(name: str, action: Any, expected: str) -> dict[str, str]:
     try:
         message = action()
@@ -314,7 +331,24 @@ def run_demo() -> int:
     (RESULTS_DIR / "manifest_v2.json").write_text(
         json.dumps(manifest_v2, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
+    signed_header_v2, _ = parse_package(PACKAGE_DIR / "firmware_v2.sfwu")
+    (RESULTS_DIR / "signed_manifest_v2.json").write_text(
+        json.dumps(
+            {
+                "manifest": signed_header_v2["manifest"],
+                "signature": signed_header_v2["signature"],
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     tamper_package(PACKAGE_DIR / "firmware_v2.sfwu", PACKAGE_DIR / "firmware_v2_tampered.sfwu")
+    tamper_manifest_signature(
+        PACKAGE_DIR / "firmware_v2.sfwu",
+        PACKAGE_DIR / "firmware_v2_bad_signature.sfwu",
+    )
 
     def apply_from_clean_state(package: Path) -> str:
         reset_demo_state()
@@ -322,6 +356,7 @@ def run_demo() -> int:
 
     rows = [
         run_case("valid_signed_update", lambda: apply_from_clean_state(PACKAGE_DIR / "firmware_v2.sfwu"), "ACCEPT"),
+        run_case("tampered_manifest_signature", lambda: apply_from_clean_state(PACKAGE_DIR / "firmware_v2_bad_signature.sfwu"), "REJECT"),
         run_case("tampered_ciphertext", lambda: apply_from_clean_state(PACKAGE_DIR / "firmware_v2_tampered.sfwu"), "REJECT"),
         run_case("rollback_sequence", lambda: apply_from_clean_state(PACKAGE_DIR / "firmware_v1_rollback.sfwu"), "REJECT"),
         run_case("failed_self_test", lambda: apply_from_clean_state(PACKAGE_DIR / "firmware_v3_bad.sfwu"), "REJECT"),
