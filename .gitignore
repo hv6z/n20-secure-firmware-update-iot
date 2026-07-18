@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.demo_runtime/
+results/packages/*.sfwu
+results/device_state/*.bin
+results/device_state/state.json
+*.key
+*.p12
+*.pfx

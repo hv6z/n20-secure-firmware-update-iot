@@ -11,6 +11,7 @@ kiểm thử trên hệ thống thật.
 - Lớp học phần: 253INT441001
 - Học phần: Bảo mật trong IoT
 - Giảng viên hướng dẫn: ThS. Hồ Nhựt Minh
+- Repository: <https://github.com/hv6z/n20-secure-firmware-update-iot>
 
 ## Cấu trúc repository
 
@@ -48,7 +49,7 @@ python -m pip install -r requirements.txt
 python src/code_demo.py --demo
 ```
 
-Kết quả mong đợi: 4/4 ca kiểm thử đạt. Ma trận được ghi vào
+Kết quả mong đợi: 5/5 ca kiểm thử đạt. Ma trận được ghi vào
 `results/test_matrix.csv`; log chi tiết nằm tại
 `results/logs/secure_update_demo.log`.
 
@@ -57,9 +58,25 @@ Kết quả mong đợi: 4/4 ca kiểm thử đạt. Ma trận được ghi vào
 | Ca kiểm thử | Kỳ vọng | Kiểm soát được xác minh |
 |---|---:|---|
 | Bản v2 hợp lệ | Chấp nhận | Chữ ký, target, sequence, AES-GCM, SHA-256, self-test |
+| Chữ ký manifest bị sửa | Từ chối | Xác thực nguồn phát hành bằng RSA-PSS |
 | Payload bị sửa 1 bit | Từ chối | Xác thực AES-GCM |
 | Bản v1 có sequence cũ | Từ chối | Chống rollback |
 | Bản v3 lỗi self-test | Từ chối | Staging và rollback |
+
+## Minh chứng
+
+### Sơ đồ quy trình OTA an toàn
+
+![Quy trình OTA an toàn](update_so_do_hinh_anh/so_do_ota_an_toan.svg)
+
+### Kết quả kiểm thử tái lập
+
+- Ma trận kết quả: [`results/test_matrix.csv`](results/test_matrix.csv)
+- Log chạy demo: [`results/logs/secure_update_demo.log`](results/logs/secure_update_demo.log)
+- Manifest mẫu: [`results/manifest_v2.json`](results/manifest_v2.json)
+- Manifest kèm chữ ký: [`results/signed_manifest_v2.json`](results/signed_manifest_v2.json)
+- Slide trình bày hoàn thiện: [`slides/slide_trinh_bay_hoan_thien.pptx`](slides/slide_trinh_bay_hoan_thien.pptx)
+- Báo cáo dùng để nộp: [`report/bao_cao_tieu_luan_hoan_thien.docx`](report/bao_cao_tieu_luan_hoan_thien.docx)
 
 ## Giới hạn an toàn
 
@@ -127,6 +144,6 @@ hiệu trích dẫn `[1]` đến `[8]` trong báo cáo.
    Phần đã sử dụng: trạng thái image, xác nhận bản cập nhật hoạt động, app
    rollback và anti-rollback dựa trên security version/eFuse.
 
-Danh mục trên cũng được lưu tại `references/link_nguon.txt`. Mọi nội dung kỹ
+Danh mục trên cũng được lưu tại `references/link_nguon.md`. Mọi nội dung kỹ
 thuật lấy từ các nguồn đều được diễn giải lại và gắn số trích dẫn tương ứng
 trong `report/bao_cao_tieu_luan.docx`.
