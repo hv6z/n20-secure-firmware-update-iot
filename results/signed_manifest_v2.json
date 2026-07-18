@@ -1,0 +1,14 @@
+{
+  "manifest": {
+    "encryption_algorithm": "AES-256-GCM",
+    "key_wrap_algorithm": "RSA-OAEP-SHA256",
+    "schema": "secure-firmware-manifest/v1",
+    "sequence": 2,
+    "sha256": "d2746b28872dfacc2c473ba5f386e6909148aaf8b223428419bc267847a713f9",
+    "signature_algorithm": "RSA-PSS-SHA256",
+    "size": 128,
+    "target": "iot-demo-board-v1",
+    "version": "2.0.0"
+  },
+  "signature": "vzJ79TTrFIzovmFZ0i+mvqQvl2p+P6r+tAQRA7GjGnpmUkyqnD3EVDMsSHv8jMuHk63jHwiVlKswYiQW9E73yb6RroMvy7vodriRcoG7czQdGMBXgyK87B6227Etu9+A8coulltVWaaVABpJnTPMesowGAm6P3y1r7bno/Vo7tETTep97I0SbWUuJKbaf6A53bS4HJFqt5xmI8WjIMu9qBzugkmbaSll05VkxrFmcHUF8pFWi/kjQrWg/gingyc9uE0WLU34mAc9lqr1LNz5TTcck1WZIJxRRfAffOUMV6yN/ZiZhnTz1Ou+bhRi1ByMYHI/8847p8x0lVVwOmmeCVkbwFUGsRSnh202MA/XAlW5jYUiINDX2xucLtFX1FHf9l5402ESb/jE6bmsI4iNaoLfi4RL8SnjILk8vG9PNJjdHb4xSK2jmAdYEyWaDCziJBmfa3vq8dLgpgwF5rAojElSJtJ9vhRrJtTOa6e/qoYsc1UWbF8rZvCs/AYzwD0q"
+}
