@@ -19,11 +19,10 @@ kiểm thử trên hệ thống thật.
 configs/                    Chính sách bảo mật của bản demo
 data/                       Firmware giả lập v1, v2 và bản lỗi self-test
 references/                 Danh mục tài liệu tham khảo và phần đã sử dụng
-report/                     Báo cáo tiểu luận Word
+report/                     Báo cáo tiểu luận DOCX và PDF cuối kỳ
 results/logs/               Nhật ký chạy thử
 results/packages/           Gói cập nhật sinh tự động khi chạy demo
 results/device_state/       Trạng thái thiết bị giả lập
-slides/                     Slide trình bày
 src/                        Mã nguồn demo
 update_so_do_hinh_anh/      Sơ đồ và hình minh chứng
 ```
@@ -75,8 +74,8 @@ Kết quả mong đợi: 5/5 ca kiểm thử đạt. Ma trận được ghi vào
 - Log chạy demo: [`results/logs/secure_update_demo.log`](results/logs/secure_update_demo.log)
 - Manifest mẫu: [`results/manifest_v2.json`](results/manifest_v2.json)
 - Manifest kèm chữ ký: [`results/signed_manifest_v2.json`](results/signed_manifest_v2.json)
-- Slide trình bày hoàn thiện: [`slides/slide_trinh_bay_hoan_thien.pptx`](slides/slide_trinh_bay_hoan_thien.pptx)
-- Báo cáo dùng để nộp: [`report/bao_cao_tieu_luan_hoan_thien.docx`](report/bao_cao_tieu_luan_hoan_thien.docx)
+- Báo cáo DOCX dùng để nộp: [`report/231A010297_TranThiHaVy_DeTai20_TieuLuan_CuoiKy.docx`](report/231A010297_TranThiHaVy_DeTai20_TieuLuan_CuoiKy.docx)
+- Báo cáo PDF xuất từ DOCX: [`report/231A010297_TranThiHaVy_DeTai20_TieuLuan_CuoiKy.pdf`](report/231A010297_TranThiHaVy_DeTai20_TieuLuan_CuoiKy.pdf)
 
 ## Giới hạn an toàn
 
@@ -146,4 +145,4 @@ hiệu trích dẫn `[1]` đến `[8]` trong báo cáo.
 
 Danh mục trên cũng được lưu tại `references/link_nguon.md`. Mọi nội dung kỹ
 thuật lấy từ các nguồn đều được diễn giải lại và gắn số trích dẫn tương ứng
-trong `report/bao_cao_tieu_luan.docx`.
+trong `report/231A010297_TranThiHaVy_DeTai20_TieuLuan_CuoiKy.docx`.
