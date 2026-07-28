@@ -1,7 +1,7 @@
-2026-07-27 18:05:43,066 | INFO | CASE=valid_signed_update EXPECTED=ACCEPT ACTUAL=ACCEPT RESULT=PASS DETAIL=Đã cài phiên bản 2.0.0 (sequence 2)
-2026-07-27 18:05:43,081 | INFO | CASE=tampered_manifest_signature EXPECTED=REJECT ACTUAL=REJECT RESULT=PASS DETAIL=Chữ ký manifest không hợp lệ
-2026-07-27 18:05:43,104 | INFO | CASE=tampered_ciphertext EXPECTED=REJECT ACTUAL=REJECT RESULT=PASS DETAIL=Giải mã/xác thực AES-GCM thất bại
-2026-07-27 18:05:43,125 | INFO | CASE=rollback_sequence EXPECTED=REJECT ACTUAL=REJECT RESULT=PASS DETAIL=Chống rollback: sequence 1 <= 1
-2026-07-27 18:05:43,152 | INFO | CASE=failed_self_test EXPECTED=REJECT ACTUAL=REJECT RESULT=PASS DETAIL=Self-test thất bại; đã rollback về firmware trước
-2026-07-27 18:05:43,154 | INFO | SUMMARY total=5 pass=5 fail=0
-2026-07-27 18:05:43,154 | INFO | OUTPUT log=D:\DAI HOC VAN HIEN\baomatiot\n20-secure-firmware-update-iot\results\logs\secure_update_demo.log matrix=D:\DAI HOC VAN HIEN\baomatiot\n20-secure-firmware-update-iot\results\test_matrix.csv
+2026-07-27 19:07:19,064 | INFO | CASE=valid_signed_update EXPECTED=ACCEPT ACTUAL=ACCEPT RESULT=PASS DETAIL=Đã cài phiên bản 2.0.0 (sequence 2)
+2026-07-27 19:07:19,078 | INFO | CASE=tampered_manifest_signature EXPECTED=REJECT ACTUAL=REJECT RESULT=PASS DETAIL=Chữ ký manifest không hợp lệ
+2026-07-27 19:07:19,096 | INFO | CASE=tampered_ciphertext EXPECTED=REJECT ACTUAL=REJECT RESULT=PASS DETAIL=Giải mã/xác thực AES-GCM thất bại
+2026-07-27 19:07:19,111 | INFO | CASE=rollback_sequence EXPECTED=REJECT ACTUAL=REJECT RESULT=PASS DETAIL=Chống rollback: sequence 1 <= 1
+2026-07-27 19:07:19,130 | INFO | CASE=failed_self_test EXPECTED=REJECT ACTUAL=REJECT RESULT=PASS DETAIL=Self-test thất bại; đã rollback về firmware trước
+2026-07-27 19:07:19,131 | INFO | SUMMARY total=5 pass=5 fail=0
+2026-07-27 19:07:19,131 | INFO | OUTPUT log=D:\DAI HOC VAN HIEN\baomatiot\n20-secure-firmware-update-iot\results\logs\secure_update_demo.log matrix=D:\DAI HOC VAN HIEN\baomatiot\n20-secure-firmware-update-iot\results\test_matrix.csv

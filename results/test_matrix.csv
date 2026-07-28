@@ -1,4 +1,4 @@
-﻿case,expected,actual,result,detail
+case,expected,actual,result,detail
 valid_signed_update,ACCEPT,ACCEPT,PASS,Đã cài phiên bản 2.0.0 (sequence 2)
 tampered_manifest_signature,REJECT,REJECT,PASS,Chữ ký manifest không hợp lệ
 tampered_ciphertext,REJECT,REJECT,PASS,Giải mã/xác thực AES-GCM thất bại

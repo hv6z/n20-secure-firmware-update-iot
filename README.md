@@ -13,6 +13,12 @@ kiểm thử trên hệ thống thật.
 - Giảng viên hướng dẫn: ThS. Hồ Nhựt Minh
 - Repository: <https://github.com/hv6z/n20-secure-firmware-update-iot>
 
+## Phạm vi bản nộp cuối kỳ
+
+Bộ nộp chính thức gồm báo cáo DOCX, bản PDF xuất từ cùng báo cáo và repository
+GitHub công khai này. Theo hướng dẫn trực tiếp của giảng viên, đề tài không phải
+nộp slide; repository vì vậy không chứa thư mục hoặc tệp trình chiếu.
+
 ## Cấu trúc repository
 
 ```text
@@ -26,6 +32,20 @@ results/device_state/       Trạng thái thiết bị giả lập
 src/                        Mã nguồn demo
 update_so_do_hinh_anh/      Sơ đồ và hình minh chứng
 ```
+
+## Tiến độ và commit theo tuần
+
+Bảng dưới đây ánh xạ tiến độ với lịch sử commit thực tế. Những tuần không có bản
+nộp riêng được ghi rõ, không tạo commit hồi tố.
+
+| Tuần | Trạng thái thực tế | Nội dung/minh chứng | Commit tiêu biểu |
+|---|---|---|---|
+| Tuần 01 | Đã thực hiện | Khởi tạo repo, README và cấu trúc ban đầu | `29ba97d`, `9499a6d` |
+| Tuần 02 | Đã thực hiện | Policy, firmware giả lập, code demo, báo cáo và 5 ca kiểm thử | `8e22f6e`, `73aa4cf`, `9dac557`, `22b6697`, `382e3d9` |
+| Tuần 03 | Không nộp bản riêng | Chương 2–3 được hoàn thiện tích lũy trong báo cáo cuối | `a8febb2` (minh chứng tích lũy) |
+| Tuần 04 | Tích lũy trong bản cuối | Chương 4, log và ma trận kết quả | `a8febb2` |
+| Tuần 05 | Tích lũy trong bản cuối | Chương 5–6 và đánh giá rủi ro | `a8febb2` |
+| Tuần 06 | Hoàn thành | DOCX/PDF cuối kỳ và rà soát repository | `a8febb2`, `0afa6bf` |
 
 ## Mô hình bảo vệ
 
