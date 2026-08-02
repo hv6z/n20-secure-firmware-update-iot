@@ -27,8 +27,7 @@ data/                       Firmware giả lập v1, v2 và bản lỗi self-tes
 references/                 Danh mục tài liệu tham khảo và phần đã sử dụng
 report/                     Báo cáo tiểu luận DOCX và PDF cuối kỳ
 results/logs/               Nhật ký chạy thử
-results/packages/           Gói cập nhật sinh tự động khi chạy demo
-results/device_state/       Trạng thái thiết bị giả lập
+results/                    Manifest, chữ ký, khóa công khai và ma trận kết quả
 src/                        Mã nguồn demo
 update_so_do_hinh_anh/      Sơ đồ và hình minh chứng
 ```
@@ -45,7 +44,7 @@ nộp riêng được ghi rõ, không tạo commit hồi tố.
 | Tuần 03 | Không nộp bản riêng | Chương 2–3 được hoàn thiện tích lũy trong báo cáo cuối | `a8febb2` (minh chứng tích lũy) |
 | Tuần 04 | Tích lũy trong bản cuối | Chương 4, log và ma trận kết quả | `a8febb2` |
 | Tuần 05 | Tích lũy trong bản cuối | Chương 5–6 và đánh giá rủi ro | `a8febb2` |
-| Tuần 06 | Hoàn thành | DOCX/PDF cuối kỳ và rà soát repository | `a8febb2`, `0afa6bf` |
+| Tuần 06 | Hoàn thành | Rà soát mẫu, cập nhật DOCX/PDF cuối kỳ và đồng bộ repository | `1cbea67`, `933dc84`, `cf0ff9d`, `6a7efc5` |
 
 ## Mô hình bảo vệ
 
@@ -106,63 +105,57 @@ Kết quả mong đợi: 5/5 ca kiểm thử đạt. Ma trận được ghi vào
 
 ## Tài liệu tham khảo đã sử dụng
 
-Ngày truy cập các nguồn: **14/07/2026**. Số thứ tự dưới đây thống nhất với ký
-hiệu trích dẫn `[1]` đến `[8]` trong báo cáo.
+Ngày truy cập các nguồn: **31/07/2026**. Số thứ tự dưới đây thống nhất với ký
+hiệu trích dẫn `[1]` đến `[10]` trong báo cáo.
 
-### Nguồn GitHub bắt buộc theo đề bài
+1. **RFC 9019 - A Firmware Update Architecture for Internet of Things
+   Devices**, IETF, 2021.
+   - URL: <https://datatracker.ietf.org/doc/html/rfc9019>
+   - Phần đã sử dụng: thành phần, vai trò và yêu cầu của kiến trúc cập nhật
+     firmware IoT.
 
-1. **Espressif Systems - ESP-IDF Platform Repository**  
-   URL: <https://github.com/espressif/esp-idf>  
-   Phiên bản tham chiếu: `release-v5.4`; tài liệu API `v5.4.2`.  
-   Phần đã sử dụng: HTTPS OTA, phân vùng `otadata`, Secure Boot, app rollback
-   và anti-rollback.
+2. **NIST SP 800-193 - Platform Firmware Resiliency Guidelines**, NIST, 2018.
+   - URL: <https://csrc.nist.gov/pubs/sp/800/193/final>
+   - Phần đã sử dụng: nguyên tắc bảo vệ, phát hiện và phục hồi firmware.
 
-2. **OWASP - IoT Security Verification Standard (ISVS)**  
-   URL: <https://github.com/OWASP/IoT-Security-Verification-Standard-ISVS>  
-   Nhánh tham chiếu: `master`.  
-   Phần đã sử dụng: yêu cầu xác minh cơ chế cập nhật phần mềm, tính toàn vẹn,
-   xác thực nguồn gốc, bảo vệ khóa và chống rollback.
+3. **RFC 9124 - A Manifest Information Model for Firmware Updates in IoT
+   Devices**, IETF, 2022.
+   - URL: <https://datatracker.ietf.org/doc/html/rfc9124>
+   - Phần đã sử dụng: metadata manifest và điều kiện xử lý gói cập nhật.
 
-3. **scriptingxss / OWASP - Firmware Security Testing Methodology (FSTM)**  
-   URL: <https://github.com/scriptingxss/owasp-fstm>  
-   Nhánh tham chiếu: `master`.  
-   Phần đã sử dụng: phương pháp đánh giá firmware gồm chín giai đoạn; tập trung
-   vào thu thập thông tin, phân tích firmware, trích xuất và phân tích hệ thống
-   tệp. Project chỉ tham khảo phương pháp, không kiểm thử hệ thống thật.
+4. **RFC 8017 - PKCS #1: RSA Cryptography Specifications Version 2.2**,
+   IETF, 2016.
+   - URL: <https://datatracker.ietf.org/doc/html/rfc8017>
+   - Phần đã sử dụng: RSA-PSS cho chữ ký và RSA-OAEP cho bọc khóa.
 
-4. **OWASP - IoTGoat: Deliberately Insecure Firmware**  
-   URL: <https://github.com/OWASP/IoTGoat>  
-   Nhánh tham chiếu: `master`.  
-   Phần đã sử dụng: nhận diện các rủi ro thường gặp trong firmware cố ý không
-   an toàn và xây dựng tư duy kiểm thử trong lab cục bộ. Project không triển
-   khai tấn công IoTGoat hoặc bất kỳ mục tiêu bên ngoài nào.
+5. **NIST SP 800-38D - Recommendation for Block Cipher Modes of Operation:
+   GCM and GMAC**, NIST, 2007.
+   - URL: <https://csrc.nist.gov/pubs/sp/800/38/d/final>
+   - Phần đã sử dụng: AES-GCM và yêu cầu về IV/nonce.
 
-### Nguồn bổ sung
+6. **FIPS PUB 180-4 - Secure Hash Standard**, NIST, 2015.
+   - URL: <https://csrc.nist.gov/pubs/fips/180-4/upd1/final>
+   - Phần đã sử dụng: tiêu chuẩn hàm băm SHA-256.
 
-5. **Espressif Systems - ESP Encrypted Image Abstraction Layer**  
-   URL: <https://github.com/espressif/idf-extra-components/tree/master/esp_encrypted_img>  
-   Nhánh tham chiếu: `master`.  
-   Phần đã sử dụng: tham khảo cấu trúc component xử lý firmware mã hóa và cơ
-   chế giải mã dữ liệu theo luồng.
-
-6. **B. Moran, H. Tschofenig, D. Brown và M. Meriac - RFC 9019: A Firmware
-   Update Architecture for Internet of Things**, IETF, 2021.  
-   URL: <https://www.rfc-editor.org/rfc/rfc9019.html>  
-   Phần đã sử dụng: vai trò firmware author, firmware server, firmware
-   consumer, manifest, bootloader và chiến lược phục hồi khi cập nhật lỗi.
-
-7. **B. Moran và cộng sự - RFC 9124: A Manifest Information Model for
-   Firmware Updates in IoT Devices**, IETF, 2022.  
-   URL: <https://www.rfc-editor.org/rfc/rfc9124.html>  
-   Phần đã sử dụng: thông tin cần có trong manifest, sequence chống rollback,
-   xác thực, bảo vệ khóa ký và điều kiện áp dụng firmware.
+7. **Repository của đề tài n20-secure-firmware-update-iot**.
+   - URL: <https://github.com/hv6z/n20-secure-firmware-update-iot>
+   - Mốc đối chiếu nội dung, mã nguồn và minh chứng trước khi tải báo cáo cuối:
+     `933dc849b40244fea8a7bd68917f2cc10667cdbf`.
 
 8. **Espressif Systems - Over The Air Updates (OTA), ESP-IDF Programming
-   Guide v5.4.2**  
-   URL: <https://docs.espressif.com/projects/esp-idf/en/v5.4.2/esp32/api-reference/system/ota.html>  
-   Phần đã sử dụng: trạng thái image, xác nhận bản cập nhật hoạt động, app
-   rollback và anti-rollback dựa trên security version/eFuse.
+   Guide v5.4.2**.
+   - URL: <https://docs.espressif.com/projects/esp-idf/en/v5.4.2/esp32/api-reference/system/ota.html>
+   - Phần đã sử dụng: phân vùng OTA, trạng thái image, rollback và anti-rollback.
 
-Danh mục trên cũng được lưu tại `references/link_nguon.md`. Mọi nội dung kỹ
-thuật lấy từ các nguồn đều được diễn giải lại và gắn số trích dẫn tương ứng
-trong `report/231A010297_TranThiHaVy_DeTai20_TieuLuan_CuoiKy.docx`.
+9. **OWASP - IoT Security Verification Standard (ISVS)**.
+   - URL: <https://github.com/OWASP/IoT-Security-Verification-Standard-ISVS>
+   - Phần đã sử dụng: yêu cầu kiểm tra cập nhật an toàn và bảo vệ khóa.
+
+10. **NIST SP 800-30 Rev. 1 - Guide for Conducting Risk Assessments**, NIST,
+    2012.
+    - URL: <https://csrc.nist.gov/pubs/sp/800/30/r1/final>
+    - Phần đã sử dụng: đánh giá khả năng xảy ra, tác động và mức ưu tiên rủi ro.
+
+Tệp `references/link_nguon.md` lưu danh sách khảo sát ban đầu. Danh mục trích
+dẫn chính thức và phần sử dụng từng nguồn được trình bày trong README này và
+`report/231A010297_TranThiHaVy_DeTai20_TieuLuan_CuoiKy.docx`.
